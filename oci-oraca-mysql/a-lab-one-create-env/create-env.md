@@ -96,11 +96,44 @@ Estimated time: 25 minutes
       </copy>
       ```
 
-## Task 3: Connect to Kubernetes and deploy the App
 
-1. Export the `kubeconfig` variable to enable communication to your new OKE cluster.
 
-   > NOTE: During the Terraform execution process, the `kubeconfig` file was automatically retrieved and stored in a project subfolder. 
+
+## Task 4: Add a HeatWave cluster to your MySQL HeatWave Database 
+
+<details><summary><b>TODO</b></summary>
+
+Update these instructions to reference creation of HeatWave cluster with existing DB System (provisioned by TF)
+
+</details>
+
+1.	From the OCI menu, select **Databases**, then **MySQL HeatWave > DB Systems**.
+	![Oracle Cloud console Menu](images/1-1-mysqlheatwave.png " ")
+
+2. Select the **appdev** compartment from the pulldown menu and Click **Create DB System**
+	![Oracle Cloud console, DB Systems](images/1-2-mysqlheatwave.png " ")
+
+3.	Choose **Production** and select the **appdev** compartment and provide name **mysql-appdev**  for the MySQL HeatWave Database
+  ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-3-mysqlheatwave.png " ")
+
+4. Choose **Standalone**, enable **MySQL HeatWave** and provide MySQL HeatWave Database administration credentials.
+  ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-4-mysqlheatwave.png " ")
+
+5. Choose the VCN and private subnet of Oracle Kubernetes Cluster **k8-appdev** to allow access to MySQL HeatWave database from Kubernetes nodes and keep hardware settings default.  
+  ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-5-mysqlheatwave.png " ")
+  ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-6-mysqlheatwave.png " ")
+
+6. Uncheck **Enable automatic backups** and in advanced settings under **Deletion Plan** Tab uncheck **Delete protected** and under  **Management** Tab check **Database Management**
+  ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-7-mysqlheatwave.png " ")
+  ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-8-mysqlheatwave.png " ")
+
+7. This will start to create a MySQL HeatWave Database, and takes 10 to 12 minutes to complete. While waiting for the creation of the MySQL HeatWave Database, you can proceed to the next lab to create an virtual machine. In Lab 6, we will resume the steps to deploy the application connecting to the MySQL HeatWave Database.
+
+  ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-9-mysqlheatwave.png " ")
+
+## Task 4: Connect to Kubernetes and deploy the App
+
+1. Export the `kubeconfig` variable to enable communication to your new OKE cluster. **Note**: During the Terraform execution process, the `kubeconfig` file was automatically retrieved and stored in a project subfolder. 
 
       ```bash
       <copy>
@@ -108,10 +141,9 @@ Estimated time: 25 minutes
       </copy>
       ```
 
-   > If the console closes, remember to rerun this command.
-   Check that Kubernetes is up and running and you can talk to the Control Plane API endpoint by listing the nodes.
-
-2. Test connectivity to the cluster:
+      > If the console closes, remember to rerun this command.
+   
+2. Check that Kubernetes is up and running and you can talk to the Control Plane API endpoint by listing the nodes.
 
       ```bash
       <copy>
@@ -171,6 +203,7 @@ Estimated time: 25 minutes
       <copy>
       kubectl get svc
       </copy>
+      ```
 
       ![OCI Console, Cloud Shell, kubectl results](images/kubectl-get-svc.png " ")
 
@@ -185,39 +218,6 @@ Estimated time: 25 minutes
       ![Wine cellar demo app](images/4-4-winestore.png " ")
 
       >Note: It may take a few minutes to complete the deployment and start loading the page content on the screen for the first time.
-
-
-## Task 4: Add a HeatWave cluster to your MySQL HeatWave Database 
-
-<details><summary><b>TODO</b></summary>
-
-Update these instructions to reference creation of HeatWave cluster with existing DB System (provisioned by TF)
-
-</details>
-
-1.	From the OCI menu, select **Databases**, then **MySQL HeatWave > DB Systems**.
-	![Oracle Cloud console Menu](images/1-1-mysqlheatwave.png " ")
-
-2. Select the **appdev** compartment from the pulldown menu and Click **Create DB System**
-	![Oracle Cloud console, DB Systems](images/1-2-mysqlheatwave.png " ")
-
-3.	Choose **Production** and select the **appdev** compartment and provide name **mysql-appdev**  for the MySQL HeatWave Database
-  ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-3-mysqlheatwave.png " ")
-
-4. Choose **Standalone**, enable **MySQL HeatWave** and provide MySQL HeatWave Database administration credentials.
-  ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-4-mysqlheatwave.png " ")
-
-5. Choose the VCN and private subnet of Oracle Kubernetes Cluster **k8-appdev** to allow access to MySQL HeatWave database from Kubernetes nodes and keep hardware settings default.  
-  ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-5-mysqlheatwave.png " ")
-  ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-6-mysqlheatwave.png " ")
-
-6. Uncheck **Enable automatic backups** and in advanced settings under **Deletion Plan** Tab uncheck **Delete protected** and under  **Management** Tab check **Database Management**
-  ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-7-mysqlheatwave.png " ")
-  ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-8-mysqlheatwave.png " ")
-
-7. This will start to create a MySQL HeatWave Database, and takes 10 to 12 minutes to complete. While waiting for the creation of the MySQL HeatWave Database, you can proceed to the next lab to create an virtual machine. In Lab 6, we will resume the steps to deploy the application connecting to the MySQL HeatWave Database.
-
-  ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-9-mysqlheatwave.png " ")
 
 You may now **proceed to the next lab**.
 
