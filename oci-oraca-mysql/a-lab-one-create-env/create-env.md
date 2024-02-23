@@ -1,6 +1,6 @@
 # Create a Kubernetes cluster
 
-<details><summary><b>TODO</b</summary>
+<details><summary><b>TODO</b></summary>
 
 - By script (maybe something like `artifacts.mjs`); build and push Spring Boot app container image to OCI Container Registry (user and token has to be created with terraform). Add the image token secret to the kustomize deployment.
 - Deploy **Spring Boot App** with MySQL connectivity
