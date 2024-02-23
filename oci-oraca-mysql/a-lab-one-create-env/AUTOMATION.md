@@ -7,6 +7,8 @@
 - Deploy a Checker (busybox) pod to run **cURL** commands to check the Spring Boot application.
 - Merge this **AUTOMATION** guide with the existing LiveLabs format.
 
+
+
 ## Set Up environment
 
 Run the deployment from OCI Cloud Shell is recommended, many variables are predefined on the OCI Cloud Shell. Node.Js is required for running the scripts (based on [google/zx](https://github.com/google/zx); a Javascript wrapper around bash scripting).

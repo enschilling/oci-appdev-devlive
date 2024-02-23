@@ -14,8 +14,8 @@
         },
         {
             "title": "Lab 1: Create Environment ",
-            "description": "Create a Kubernetes cluster, MySQL and deploy microservice application",
-            "filename": "../../a-lab-one-create-env/AUTOMATION.md"
+            "description": "Create a Kubernetes cluster, MySQL DB System with HeatWave, and deploy microservice application",
+            "filename": "../../a-lab-one-create-env/create-env.md"
         },
         {
             "title": "Lab 2: Configure Logging Analytics",
