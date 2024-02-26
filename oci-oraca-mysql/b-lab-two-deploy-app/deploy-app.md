@@ -93,12 +93,13 @@ Estimated time: 10 minutes
 
       ```bash
       <copy>
-      cd ls
+      ls
       </copy>
       ```
 
       >Note: Verify the follwoing files are present in the folder
       * apmlab-fss.yaml
+      * Dockerfile
       * wstore.yaml
       * wstore-add-storage.yaml
       * wstore-deploy-agent.yaml
@@ -111,7 +112,9 @@ Estimated time: 10 minutes
       </copy>
       ```
 
-7. Run the `kubectl` command below to display the statue of the pod creation. Wait until all pods are in the 'Running' state. This might take a minute or two.
+### Task 3b: Test format
+
+1. Run the `kubectl` command below to display the statue of the pod creation. Wait until all pods are in the 'Running' state. This might take a minute or two.
 
       ```bash
       <copy>
