@@ -15,9 +15,8 @@ Estimated time: Up to 20 minutes
 
 * Deploy stuff
 
-<details><summary><b>Option 1 - DIY</b><summary>
 
-## Task 1: Build and Package the new App
+## Deployment Option 1: Full DIY Approach
 
 Stuff here
 
@@ -27,25 +26,11 @@ Stuff here
         </copy>
         ```
 
-## Task 2: Deploy the App
-
----
-
-</details>
-
-<details><summary><b>Option 2 - The Automated Way</b><summary>
-
-## Task 1: Run the build script
+## Deployment Option 2: Take the automated path
 
 Stuff here
 
----
-
-</details>
-
-<details><summary><b>Option 3 - Just deploy</b><summary>
-
-## Task 1: Deploy the pre-built image
+## Deployment Option 3: Just Deploy
 
 1. Create a new file called `admessage.yaml` and paste the following:
 
