@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
-	<artifactId>order-history</artifactId>
+	<artifactId>admessage</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>order-history</name>
-	<description>Rest API to fetch order history of a user</description>
+	<name>admessage</name>
+	<description>Rest API to fetch most recent targetd ads</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

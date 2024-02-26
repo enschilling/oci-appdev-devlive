@@ -1,6 +1,6 @@
 #!/usr/bin/env zx
 
-import { buildJarGradle, getVersionGradle } from "./lib/gradle.mjs";
+import { buildJarMaven, getVersionMaven } from "./lib/maven.mjs";
 import {
   buildImage,
   checkPodmanMachineRunning,
@@ -28,7 +28,7 @@ await loginContainerRegistry(
   user_auth_token
 );
 
-await buildAndReleaseServiceMySQL();
+await buildAndReleaseServiceAdMessage();
 
 async function loginContainerRegistry(
   registry_url,
@@ -42,13 +42,13 @@ async function loginContainerRegistry(
   console.log();
 }
 
-async function buildAndReleaseServiceMySQL() {
+async function buildAndReleaseServiceAdMessage() {
   const pwd = (await $`pwd`).stdout.trim();
 
-  const service = "service-mysql";
+  const service = "admessage";
   await cd(`src/${service}`);
-  const version = await getVersionGradle();
-  await buildJarGradle();
+  const version = await getVersionMaven();
+  await buildJarMaven();
 
   const image_name = `${service}`;
   await buildImage(`localhost/${image_name}`, version);
