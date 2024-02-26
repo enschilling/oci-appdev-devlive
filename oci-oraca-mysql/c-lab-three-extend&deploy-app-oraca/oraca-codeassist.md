@@ -18,13 +18,13 @@ Estimated time: Up to 20 minutes
 
 ## Deployment Option 1: Full DIY Approach
 
-Stuff here
+1. Stuff here
 
-        ```bash
-        <copy>
-        test code block
-        </copy>
-        ```
+    ```bash
+    <copy>
+    test code block
+    </copy>
+    ```
 
 ## Deployment Option 2: Take the automated path
 
@@ -34,48 +34,48 @@ Stuff here
 
 1. Create a new file called `admessage.yaml` and paste the following:
 
-        ```
-        <copy>
-        apiVersion: v1
-        kind: Service
+    ```bash
+    <copy>
+    apiVersion: v1
+    kind: Service
+    metadata:
+    name: admessage
+    spec:
+    type: LoadBalancer
+    selector:
+        app: admessage
+    ports:
+        - protocol: TCP
+        port: 8082
+        targetPort: 8082
+    externalTrafficPolicy: Local
+    ---
+    apiVersion: apps/v1
+    kind: StatefulSet
+    metadata:
+    name: admessage
+    namespace: default 
+    spec:
+    serviceName: "admessage"
+    replicas: 1
+    selector:
+        matchLabels:
+        app: admessage
+    template:
         metadata:
-        name: admessage
-        spec:
-        type: LoadBalancer
-        selector:
+        annotations:
+            instrumentation.opentelemetry.io/inject-java: "opentelemetry-operator-system/inst-apm-java"
+        labels:
             app: admessage
-        ports:
-            - protocol: TCP
-            port: 8082
-            targetPort: 8082
-        externalTrafficPolicy: Local
-        ---
-        apiVersion: apps/v1
-        kind: StatefulSet
-        metadata:
-        name: admessage
-        namespace: default 
         spec:
-        serviceName: "admessage"
-        replicas: 1
-        selector:
-            matchLabels:
-            app: admessage
-        template:
-            metadata:
-            annotations:
-                instrumentation.opentelemetry.io/inject-java: "opentelemetry-operator-system/inst-apm-java"
-            labels:
-                app: admessage
-            spec:
-            containers:
-            - name: admessage
-                image:  phx.ocir.io/axywji1aljc2/winestore:admessage.v1.0
-                command: ["java", "-jar", "./AdMessage.jar", "--server.port=8082", "--spring.datasource.url=jdbc:mysql://10.0.10.165/wine", "--spring.datasource.username=wine", "--spring.datasource.password=O&Mdemo1"]
-                ports:
-                - containerPort: 8083
-        </copy>
-        ```
+        containers:
+        - name: admessage
+            image:  phx.ocir.io/axywji1aljc2/winestore:admessage.v1.0
+            command: ["java", "-jar", "./AdMessage.jar", "--server.port=8082", "--spring.datasource.url=jdbc:mysql://10.0.10.165/wine", "--spring.datasource.username=wine", "--spring.datasource.password=O&Mdemo1"]
+            ports:
+            - containerPort: 8083
+    </copy>
+    ```
 
 ---
 
