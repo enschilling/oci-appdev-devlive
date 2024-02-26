@@ -52,6 +52,8 @@ Estimated time: 10 minutes
       </copy>
       ```
 
+      ![Kubectl command](images/2-3-1-buildapp.png " ")
+
 2. Execute the command below to connect to the MySQL HeatWave Database using the Private IP address of the database and the credentials provided when the DB System was created.
 
       ```bash
@@ -60,31 +62,38 @@ Estimated time: 10 minutes
       </copy>
       ```
 
-3. 
+      ![Kubectl command](images/2-3-2-buildapp.png " ")
+
+3. Execute the command below to create a **`WINE`** application database with required tables.
+
+      ```bash
+      <copy>
+      source insert_100_mysql.sql
+      </copy>
+      ```
+
+      ![Kubectl command](images/2-3-3-buildapp.png " ")
+
+4. Type **exit** to leave the MySQL client, then **exit** once more to leave and terminate the MySQL Client pod.
+
+      ![Kubectl command](images/2-3-4-buildapp.png " ")
+
 
 ## Task 3: Deploy the application
 
-3. Download the zip file to the Cloud Shell home directory.
+1. Navigate to the app deployment folder.
 
       ```bash
       <copy>
-      cd ~; wget https://objectstorage.us-phoenix-1.oraclecloud.com/n/axfo51x8x2ap/b/apmocw-bucket-2022/o/sb-hol.zip
+      cd ~/oci-devlive-2024/sb-hol
       </copy>
       ```
 
-4. Unzip the file. This will create a directory called **sb-hol**.
+2. Verify the contents of the **sb-hol** directory.
 
       ```bash
       <copy>
-      unzip ~/sb-hol.zip
-      </copy>
-      ```
-
-5. Change to the **sb-hol** directory and verify the deployment files.
-
-      ```bash
-      <copy>
-      cd ~/sb-hol;ls
+      cd ls
       </copy>
       ```
 
@@ -94,7 +103,7 @@ Estimated time: 10 minutes
       * wstore-add-storage.yaml
       * wstore-deploy-agent.yaml
 
-6. Deploy the app to your OKE cluster.
+3. Deploy the app to your OKE cluster.
 
       ```bash
       <copy>
