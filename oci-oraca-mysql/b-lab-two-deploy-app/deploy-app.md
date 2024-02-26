@@ -22,7 +22,7 @@ Estimated time: 10 minutes
 
       ```bash
       <copy>
-      export KUBECONFIG=~/oci-devlive-24/deployment/terraform/generated/kubeconfig
+      export KUBECONFIG=~/oci-devlive-2024/deployment/terraform/generated/kubeconfig
       </copy>
       ```
 
@@ -42,7 +42,27 @@ Estimated time: 10 minutes
       10.0.156.59   Ready    node    3d    v1.28.2
       ```
 
-## Task 2: Deploy the application
+## Task 2: Prepare Database for the application
+
+1. Deploy an OKE Pod containing the MySQL client that will be used to connect to the DB System.
+
+      ```bash
+      <copy>
+      kubectl run mysql-client --image=iad.ocir.io/axfo51x8x2ap/load-mysql-data:latest -it --rm --restart=Never -- /bin/bash
+      </copy>
+      ```
+
+2. Execute the command below to connect to the MySQL HeatWave Database using the Private IP address of the database and the credentials provided when the DB System was created.
+
+      ```bash
+      <copy>
+      mysql -h <mds-private-ip-address> -u <mds-admin-user> -p
+      </copy>
+      ```
+
+3. 
+
+## Task 3: Deploy the application
 
 3. Download the zip file to the Cloud Shell home directory.
 

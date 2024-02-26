@@ -80,6 +80,7 @@ Estimated time: 25 minutes
       ```bash
       <copy>
       cd deployment/terraform/
+      terraform init
       terraform apply -auto-approve
       </copy>
       ```
@@ -108,18 +109,17 @@ Estimated time: 25 minutes
 4. Provide MySQL database administrator credentials, choose **Standalone**, and leave the **Enable HeatWave** box unchecked.
   ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-4-mysqlheatwave.png " ")
 
-5. Choose the VCN **devlive-##-vcn** and private subnet for the MySQL DB System **mysql_subnet_devlive_##** to allow access to MySQL HeatWave database from Kubernetes nodes and keep hardware settings default.  
+5. Choose the VCN **devlive-##-vcn** and private subnet for the MySQL DB System **`mysql_subnet_devlive_##`** to allow access to MySQL HeatWave database from Kubernetes nodes and keep hardware settings default.  
   ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-5-mysqlheatwave.png " ")
   ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-6-mysqlheatwave.png " ")
 
-6. Uncheck **Enable automatic backups** and in advanced settings under **Deletion Plan** Tab uncheck **Delete protected** and under  **Management** Tab check **Database Management**
+6. Uncheck **Enable automatic backups**, then click _`Show advanced options`_. Uncheck **Delete protected** under **Deletion Plan** Tab and check **Database Management** under  **Management** Tab 
   ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-7-mysqlheatwave.png " ")
   ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-8-mysqlheatwave.png " ")
 
-7. This will start to create a MySQL HeatWave Database, and takes 10 to 12 minutes to complete. While waiting for the creation of the MySQL HeatWave Database, you can proceed to the next lab to create an virtual machine. In Lab 6, we will resume the steps to deploy the application connecting to the MySQL HeatWave Database.
+7. This will start to create a MySQL HeatWave Database, and takes 10-15 minutes to complete. While waiting for the creation of the MySQL HeatWave Database, the workshop facilitators will discuss some of the benefits of MySQL HeatWave. In Lab 2, we will resume the steps to deploy the application connecting to the MySQL HeatWave Database.
 
   ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-9-mysqlheatwave.png " ")
-
 
 You may now **proceed to the next lab**.
 
