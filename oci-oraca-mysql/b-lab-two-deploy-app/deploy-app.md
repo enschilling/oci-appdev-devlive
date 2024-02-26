@@ -128,6 +128,7 @@ Estimated time: 10 minutes
       wstore-back-0    1/1     Running   0          2d23h
       wstore-back-1    1/1     Running   0          2d23h
       wstore-front-0   1/1     Running   0          2d23h
+      ```
 
 8. Retrieve the public IP address for the application service endpoint. Copy it into a text file for future use.
 
@@ -147,7 +148,7 @@ Estimated time: 10 minutes
       </copy>
       ```
 
-      ![Wine cellar demo app](images/4-4-winestore.png " ")
+      ![Wine cellar demo app](images/2-4-1-winestoreapp.png " ")
 
       >Note: It may take a few minutes to complete the deployment and start loading the page content on the screen for the first time.
 
