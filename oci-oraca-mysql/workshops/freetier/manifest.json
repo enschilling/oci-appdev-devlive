@@ -18,9 +18,9 @@
             "filename": "../../a-lab-one-create-env/create-env.md"
         },
         {
-            "title": "Lab 2: Configure Logging Analytics",
-            "description": "Configure Logging Analytics and Create an APM Domain and obtain Data Upload Endpoint and Private Data Key ",
-            "filename": "../../b-lab-two-configure-la/enable-la-service.md"
+            "title": "Lab 2: Deploy the app to Kubernetes",
+            "description": "Connect to the Kubernetes cluster and deploy the sample app",
+            "filename": "../../b-lab-two-deploy-app/deploy-app.md"
         },
         {
             "title": "Lab 3: Enhance application",

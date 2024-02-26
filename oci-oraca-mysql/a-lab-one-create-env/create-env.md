@@ -1,18 +1,16 @@
-# Create a Kubernetes cluster
+# Provision the infrastructure
 
 <details><summary><b>TODO</b></summary>
 
-- By script (maybe something like `artifacts.mjs`); build and push Spring Boot app container image to OCI Container Registry (user and token has to be created with terraform). Add the image token secret to the kustomize deployment.
 - Deploy **Spring Boot App** with MySQL connectivity
 - Deploy a Checker (busybox) pod to run **cURL** commands to check the Spring Boot application.
 - Store scripts and deployment code separately from markdown - include instructions to retrieve.
-- Merge this **AUTOMATION** guide with the existing LiveLabs format.
 
 </details>
 
 ## Introduction
 
-This workshop uses Spring Boot-based Java microservices connecting to a MySQL HeatWave database as a target application to illustrate the capabilities for end-to-end monitoring using OCI Observability and Management Services. In this lab, you will utilize Terraform to provision your resources via Infrastructure as Code. This includes an Oracle Container Engine for Kubernetes (OKE) cluster, a MySQL DB System, and more. You will then enable HeatWave on the MySQL cluster, then deploy the application to your OKE cluster.
+This workshop uses Spring Boot-based Java microservices connecting to a MySQL HeatWave database as a target application to illustrate the capabilities for end-to-end monitoring using OCI Observability and Management Services. In this lab, you will utilize Terraform to provision your resources via Infrastructure as Code. This includes a Virtual Cloud Netwokr (VCN), an Oracle Container Engine for Kubernetes (OKE) cluster, and more. You will then provision a MySQL HeatWave DB System through the OCI Console.
 
 Estimated time: 25 minutes
 
@@ -20,7 +18,7 @@ Estimated time: 25 minutes
 
 * Create a compartment
 * Provision resources with Terraform
-* Activate MySQL HeatWave on the cluster
+* Provision MySQL HeatWave DB System
 
 ### Prerequisites
 
@@ -35,7 +33,7 @@ Estimated time: 25 minutes
 	![Oracle Cloud console, Create Compartment](images/1-2-compartments.png " ")
 3. Enter the following parameters:
 *	Compartment name: **devlive24**
-*	Description: **App Dev compartment for DevLive 2024**
+*	Description: **Compartment for 2024 DevLive Hands-on lab**
 *	Accept the default values for the other fields, and click, **Create Compartment**
 	![Oracle Cloud console, Create Compartment](images/1-3-compartments.png " ")
 *	Verify that your **devlive24** compartment is created in the table
@@ -49,19 +47,19 @@ Estimated time: 25 minutes
 
       ```bash
       <copy>
-      get clone https://githubrepotobeadded
+      git clone https://githubrepotobeadded
       </copy>
       ```
 3. Change to the scripts folder and install dependancies. Then return to the root of the project folder.
 
       ```bash
       <copy>
-      cd oci-appdev-devlive/scripts && npm install && cd ..
+      cd oci-devlive-2024/scripts && npm install && cd ..
       </copy>
       ```
 4. Set up the environment. It will create a `.env.json` file with all the information required. Do not alter or delete this file. Additionally, `.env.json` files are in the `.gitignore` file to ensure the contents never find their way to a public SCM site.
 
-   As part of the script you will be prompted with a comparmtment name. Answer the **Compartment name** prompt with the name used in **Task 1**. The **`root`** compartment will be used if you do not enter a value.
+   As part of the script you will be prompted with a comparmtment name. Answer the **Compartment name** prompt with the name used in **Task 1** (**`devlive24`**). The **`root`** compartment will be used if you do not enter a value.
 
       ```bash
       <copy>
@@ -97,29 +95,21 @@ Estimated time: 25 minutes
       ```
 
 
-
-
-## Task 4: Add a HeatWave cluster to your MySQL HeatWave Database 
-
-<details><summary><b>TODO</b></summary>
-
-Update these instructions to reference creation of HeatWave cluster with existing DB System (provisioned by TF)
-
-</details>
+## Task 4: Dedploy the MySQL Database System
 
 1.	From the OCI menu, select **Databases**, then **MySQL HeatWave > DB Systems**.
 	![Oracle Cloud console Menu](images/1-1-mysqlheatwave.png " ")
 
-2. Select the **appdev** compartment from the pulldown menu and Click **Create DB System**
+2. Select the **devlive24** compartment from the pulldown menu and Click **Create DB System**
 	![Oracle Cloud console, DB Systems](images/1-2-mysqlheatwave.png " ")
 
-3.	Choose **Production** and select the **appdev** compartment and provide name **mysql-appdev**  for the MySQL HeatWave Database
+3.	Choose **Production** and select the **devlive24** compartment and provide name **mysql-appdev**  for the MySQL HeatWave Database
   ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-3-mysqlheatwave.png " ")
 
-4. Choose **Standalone**, enable **MySQL HeatWave** and provide MySQL HeatWave Database administration credentials.
+4. Provide MySQL database administrator credentials, choose **Standalone**, and leave the **Enable HeatWave** box unchecked.
   ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-4-mysqlheatwave.png " ")
 
-5. Choose the VCN and private subnet of Oracle Kubernetes Cluster **k8-appdev** to allow access to MySQL HeatWave database from Kubernetes nodes and keep hardware settings default.  
+5. Choose the VCN **devlive-##-vcn** and private subnet for the MySQL DB System **mysql_subnet_devlive_##** to allow access to MySQL HeatWave database from Kubernetes nodes and keep hardware settings default.  
   ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-5-mysqlheatwave.png " ")
   ![Oracle Cloud console, Create MySQL HeatWave Database](images/1-6-mysqlheatwave.png " ")
 
