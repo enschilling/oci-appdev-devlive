@@ -108,7 +108,7 @@ Estimated time: 10 minutes
 
       ```bash
       <copy>
-      kubectl apply -f ~/sb-hol/wstore.yaml --validate=false
+      kubectl apply -f wstore.yaml --validate=false
       </copy>
       ```
 
